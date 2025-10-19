@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Tailwind's slate-900 */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-white p-4">
+
+    <div class="bg-slate-800 p-8 rounded-xl shadow-2xl text-center w-full max-w-xs md:max-w-sm">
+        <h1 class="text-3xl font-bold mb-2">My QR Code</h1>
+        <p class="text-slate-400 mb-6">Scan this code to visit my website!</p>
+        
+        <!-- This div will contain the generated QR code -->
+        <div id="qrcode" class="p-4 bg-white rounded-lg inline-block"></div>
+
+        <p class="mt-6 text-sm text-slate-500">
+            This QR code was generated with JavaScript.
+        </p>
+        <p class="mt-2 text-xs text-slate-500">
+            Note: The behavior of opening in a new tab depends on the scanning app, not the QR code itself.
+        </p>
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Replace the URL below with your actual website address.
+            // Example: 'https://www.your-personal-website.com'
+            const myWebsiteUrl = 'https://vislabs-web.github.io/GITv1.3/';
+
+            const qrcodeContainer = document.getElementById("qrcode");
+            
+            if (qrcodeContainer) {
+                new QRCode(qrcodeContainer, {
+                    text: myWebsiteUrl,
+                    width: 256,
+                    height: 256,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
+        });
+    </script>
+
+</body>
